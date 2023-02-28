@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Advice({ data, changeAdvice }) {
+export default function Advice({ data, changeAdvice, loading, toggleDice }) {
   return (
-    <div class="advice-wrapper">
+    <div class={loading ? 'advice-wrapper loading' : 'advice-wrapper'}>
       <p className="advice-id">Advice #{data.id}</p>
       <p className="advice">"{data.advice}"</p>
       <svg
@@ -19,13 +19,21 @@ export default function Advice({ data, changeAdvice }) {
           </g>
         </g>
       </svg>
-      <div className="dice" onClick={changeAdvice}>
+      <div
+        className="dice"
+        onClick={changeAdvice}
+        onMouseOver={toggleDice}
+        onMouseOut={toggleDice}
+      >
         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M20 0H4a4.005 4.005 0 0 0-4 4v16a4.005 4.005 0 0 0 4 4h16a4.005 4.005 0 0 0 4-4V4a4.005 4.005 0 0 0-4-4ZM7.5 18a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"
-            fill="hsl(218, 23%, 16%)"
+            fill="hsl(217, 19%, 24%)"
           />
         </svg>
+      </div>
+      <div className="advice-loading">
+        <span className="loading-bar"></span>
       </div>
     </div>
   );
