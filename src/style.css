@@ -39,7 +39,7 @@ body {
   }
 }
 .wrapper > svg.active {
-  opacity: 0.15;
+  opacity: 0.02;
   bottom: 30px;
   animation: gotop 2s infinite 0.2s;
 }
@@ -93,27 +93,21 @@ body {
   margin-top: 20px;
   margin-bottom: -80px;
   cursor: pointer;
-  transition: 0.3s;
 }
 .dice:hover {
   box-shadow: 0 0 25px 0 hsl(150, 100%, 66%);
-  animation: dicetop 2s infinite 0.2s;
 }
-@keyframes dicetop {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(2px);
-  }
-}
+
 .advice-loading {
   visibility: hidden;
-  opacity: 0;
+  opacity: 1;
   transition: all 0.2s;
+  transition-delay: 0s !important;
   position: absolute;
 }
 .loading .advice-loading {
+  transition: all 0.05s;
+  transition-delay: unset !important;
   opacity: 1;
   visibility: visible;
   left: 0;
@@ -127,7 +121,11 @@ body {
   align-items: center;
   overflow: hidden;
 }
-.loading .dice {
+.advice-wrapper > * {
+  transition-delay: 0.3s !important;
+  transition: 0.1s;
+}
+.loading > * {
   opacity: 0;
   visibility: hidden;
 }
@@ -135,10 +133,17 @@ body {
   width: 75px;
   height: 75px;
   border-radius: 50%;
+  visibility: hidden;
   border: 10px solid hsl(218, 23%, 16%);
   box-shadow: 16px -1px 20px 0px hsl(150deg 100% 66% / 19%);
   border-right-color: hsl(150, 100%, 66%);
   animation: spinning 2s infinite;
+}
+.loading .loading-bar {
+  visibility: visible;
+}
+.mobile-pattern {
+  display: none;
 }
 @keyframes spinning {
   0% {
@@ -146,5 +151,23 @@ body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@media (max-width: 600px) {
+  .mobile-pattern {
+    display: block;
+  }
+  .pattern {
+    display: none;
+  }
+  .advice {
+    max-width: 300px;
+    font-size: 24px;
+  }
+  .advice-wrapper {
+    padding: 40px;
+  }
+  .wrapper > svg {
+    display: none;
   }
 }

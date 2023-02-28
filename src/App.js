@@ -12,6 +12,7 @@ export default function App() {
       .then((r) => r.json())
       .then((a) => {
         setAdvice(a.slip);
+
         setTimeout(() => setLoading(false), 900);
       });
   };
